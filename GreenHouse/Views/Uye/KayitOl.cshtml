@@ -1,5 +1,12 @@
 ﻿@using GreenHouse.DTO.UyeDTO
 @model UyeRegisterDTO
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 
