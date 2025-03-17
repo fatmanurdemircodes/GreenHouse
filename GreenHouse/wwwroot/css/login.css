@@ -1,0 +1,53 @@
+﻿body {
+    background: #e8f5e9; /* Açık Yeşil */
+    font-family: Arial, sans-serif;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    border: 2px solid #2e7d32;
+    text-align: center;
+}
+
+h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    background: #4caf50;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+    .btn-success:hover {
+        background: #388e3c;
+    }
+
+.form-control {
+    border: 1px solid #4caf50;
+}
+
+    .form-control:focus {
+        box-shadow: 0 0 5px #4caf50;
+        border-color: #2e7d32;
+    }
+
+.input-group-text {
+    background: #4caf50;
+    color: white;
+    border: none;
+}

@@ -1,0 +1,30 @@
+﻿@using GreenHouse.DTO.UyeDTO
+@model UyeLoginDTO
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="text-center">Giriş Yap</h2>
+
+        <form method="post">
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" asp-for="MailAdresi" class="form-control" placeholder="Email adresinizi girin">
+                <span asp-validation-for="MailAdresi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" asp-for="UyeSifre" class="form-control" placeholder="Şifrenizi girin">
+                <span asp-validation-for="UyeSifre" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                <i class="fas fa-sign-in-alt"></i> Giriş Yap
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>

@@ -1,0 +1,42 @@
+﻿@using GreenHouse.DTO.UyeDTO
+@model UyeRegisterDTO
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="text-center">Kayıt Ol</h2>
+
+        <form method="post">
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" asp-for="UyeAdi" class="form-control" placeholder="Adınızı girin">
+                <span asp-validation-for="UyeAdi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" asp-for="UyeSoyadi" class="form-control" placeholder="Soyadınızı girin">
+                <span asp-validation-for="UyeSoyadi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <input type="email" asp-for="MailAdresi" class="form-control" placeholder="Email adresinizi girin">
+                <span asp-validation-for="MailAdresi" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <input type="password" asp-for="UyeSifre" class="form-control" placeholder="Şifrenizi girin">
+                <span asp-validation-for="UyeSifre" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                <i class="fas fa-user-plus"></i> Kayıt Ol
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>

@@ -1,0 +1,72 @@
+﻿@model GreenHouse.Core.Entities.Urun
+
+<h2 class="text-primary"><i class="fas fa-plus-circle"></i> Yeni Ürün Ekle</h2>
+
+<div class="card shadow-lg rounded p-4 bg-light">
+    <form asp-action="Ekle" method="post">
+        <div class="mb-3">
+            <label asp-for="UrunAdi" class="form-label fw-bold">Ürün Adı</label>
+            <input asp-for="UrunAdi" class="form-control shadow-sm" placeholder="Ürün adını giriniz..." />
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label fw-bold">Kategori</label>
+                <select asp-for="KategoriId" asp-items="ViewBag.Kategoriler" class="form-control border-success shadow-sm">
+                    <option value="">Kategori seçiniz...</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label class="form-label fw-bold">Üretici</label>
+                <select asp-for="UreticiId" asp-items="ViewBag.Ureticiler" class="form-control border-success shadow-sm">
+                    <option value="">Üretici seçiniz...</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Üye</label>
+            <select asp-for="UyeId" asp-items="ViewBag.Uyeler" class="form-control border-success shadow-sm">
+                <option value="">Üye seçiniz...</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">İçerikler:</label>
+            <div class="row">
+                @foreach (var icerik in ViewBag.Icerikler)
+                {
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" name="secilenIcerikler" value="@icerik.IcerikId" class="form-check-input" />
+                            <label class="form-check-label">@icerik.IcerikAdi</label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Kaydet
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Geri Dön
+            </a>
+        </div>
+    </form>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'İşlem Başarılı!',
+            text: '@Html.Raw(System.Text.Encodings.Web.JavaScriptEncoder.Default.Encode(ViewBag.Message))',
+            confirmButtonColor: '#28a745'
+        });
+    </script>
+}

@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container text-center mt-5">
+    <div class="p-5 bg-success text-white rounded shadow">
+        <h1 class="display-4 fw-bold"><i class="fas fa-seedling"></i> GreenHouse'e Hoş Geldiniz!</h1>
+        <p class="fs-5">GreenHouse, siz ve sizin sağlığınızın her zaman yanında.</p>
+
+        <a class="btn btn-light btn-lg mt-3 text-success fw-bold" asp-controller="Urun" asp-action="Index">
+            <i class="fas fa-store"></i> Ürünleri İncele
+        </a>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fas fa-star fa-3x text-warning"></i>
+                    <h5 class="card-title mt-3">Favorilere Ekle</h5>
+                    <p class="card-text">Beğendiğiniz ürünleri favorilerinize ekleyerek daha sonra kolayca erişin.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fas fa-ban fa-3x text-danger"></i>
+                    <h5 class="card-title mt-3">Kara Listeye Ekle</h5>
+                    <p class="card-text">İçeriğini beğenmediğiniz veya zararlı olduğunu düşündüğünüz ürünleri kara listenize ekleyin.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <i class="fas fa-lightbulb fa-3x text-primary"></i>
+                    <h5 class="card-title mt-3">Ürün Tavsiye Et</h5>
+                    <p class="card-text">Güncel bilgilerini bildiğiniz ürünleri isminiz ile birlikte tavsiye edin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

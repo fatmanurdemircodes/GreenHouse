@@ -1,0 +1,41 @@
+﻿@model GreenHouse.Core.Entities.FavoriListesi
+
+@{
+    ViewData["Title"] = "Favori Ürünlerim";
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2 class="text-success"><i class="fas fa-heart"></i> @Model.ListeAdi</h2>
+
+<div class="table-responsive shadow-lg rounded">
+    <table class="table table-hover table-bordered bg-light">
+        <thead class="bg-success text-white">
+            <tr>
+                <th>Ürün Adı</th>
+                <th class="text-center">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.FavoriListeDetaylar)
+            {
+                <tr class="align-middle">
+                    <td class="fw-bold">@item.Urun?.UrunAdi</td>
+                    <td class="text-center">
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@item.FavoriListeDetayId" />
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Sil
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

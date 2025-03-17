@@ -1,0 +1,48 @@
+﻿@model List<GreenHouse.Core.Entities.Urun>
+
+<h2 class="text-success">Ürün Listesi</h2>
+
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="input-group shadow-sm">
+        <input type="text" name="searchTerm" class="form-control" placeholder="🔍 Ürün Ara..." value="@Context.Request.Query["searchTerm"]">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-search"></i> Ara
+        </button>
+        <a asp-action="Index" class="btn btn-outline-danger">
+            <i class="fas fa-times"></i> Temizle
+        </a>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover shadow-lg">
+    <thead class="bg-success text-white">
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Üretici</th>
+            <th class="text-center">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+            <tr>
+                <td class="fw-bold">@urun.UrunAdi</td>
+                <td>@(urun.Kategori?.KategoriAdi ?? "Bilinmiyor")</td>
+                <td>@(urun.Uretici?.UreticiAdi ?? "Bilinmiyor")</td>
+                <td class="text-center">
+                    <a asp-action="Detaylar" asp-route-id="@urun.UrunId" class="btn btn-primary btn-sm">
+                        <i class="fas fa-info-circle"></i> Detaylar
+                    </a>
+                    <a asp-action="Duzenle" asp-route-id="@urun.UrunId" class="btn btn-warning btn-sm text-white">
+                        <i class="fas fa-edit"></i> Güncelle
+                    </a>
+                    <a href="@Url.Action("Sil", "Urun", new { id = urun.UrunId })" class="btn btn-danger btn-sm text-white">
+                        <i class="fas fa-trash-alt"></i> Sil
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

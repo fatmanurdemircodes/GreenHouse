@@ -1,0 +1,113 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GreenHouse</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+            <div class="container">
+                <!-- Sol Taraf: Logo -->
+                <a class="navbar-brand fw-bold text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-seedling"></i> GreenHouse
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Sol Taraf: Ana Sayfa & Ürünler -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home"></i> Ana Sayfa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Urun" asp-action="Index">
+                                <i class="fas fa-leaf"></i> Ürünler
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-light text-success ms-2 rounded-pill" asp-area="" asp-controller="Urun" asp-action="Ekle">
+                                <i class="fas fa-plus-circle"></i> Ürün Ekle
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Sağ Taraf -->
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <!-- Kullanıcı Profili & Çıkış -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> @Context.Session.GetString("KullaniciAdi")
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="FavoriListesi" asp-action="Index">
+                                            <i class="fas fa-heart"></i> Favori Listesi
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="KaraListe" asp-action="Index">
+                                            <i class="fas fa-ban"></i> Kara Liste
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item text-danger" asp-area="" asp-controller="Uye" asp-action="CikisYap">
+                                            <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Giriş ve Kayıt Butonları -->
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light text-white ms-2 rounded-pill" asp-area="" asp-controller="Uye" asp-action="GirisYap">
+                                    <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-warning text-white ms-2 rounded-pill" asp-area="" asp-controller="Uye" asp-action="KayitOl">
+                                    <i class="fas fa-user-plus"></i> Kayıt Ol
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4 flex-grow-1">
+        @RenderBody()
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            &copy; 2025 - GreenHouse | <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Gizlilik Politikası</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
